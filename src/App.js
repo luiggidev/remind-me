@@ -7,8 +7,6 @@ function App() {
       Start new Reminder
       <Link to="/createReminder">Create Reminder</Link>
 
-      {/* <Link to="/createReminder">Create Reminder</Link>
-      <Link to="/showReminder">Show reminder</Link> */}
     </div>
   );
 }
