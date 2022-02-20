@@ -1,97 +1,43 @@
 import React, { Component } from 'react';
-import './Form.css';
-import { Navigate } from "react-router-dom";
-
+// import { Navigate } from "react-router-dom";
 
 class Form extends React.Component {
-    constructor(props) {
-      super(props);
-      this.state = {
-          title: '',
-          category: '',
-          provider: '',
-          contractEnd: '',
-          notice: '',
-          redirect: false
-      };
-  
-      this.handleTitleChange = this.handleTitleChange.bind(this);
-      this.handleCategoryChange = this.handleCategoryChange.bind(this);
-      this.handleProviderChange = this.handleProviderChange.bind(this);
-      this.handleContractEndChange = this.handleContractEndChange.bind(this);
-      this.handleNoticeChange = this.handleNoticeChange.bind(this);
-
-      this.handleSubmit = this.handleSubmit.bind(this);
-    }
-  
-    handleTitleChange(event) {
-      this.setState({title: event.target.value});
-    }
-
-    handleCategoryChange(event) {
-        this.setState({category: event.target.value});
-    }
-
-    handleProviderChange(event) {
-        this.setState({provider: event.target.value});
-    }
-
-    handleContractEndChange(event) {
-        this.setState({contractEnd: event.target.value});
-    }
-
-    handleNoticeChange(event) {
-        this.setState({notice: event.target.value});
-    }
-  
-    handleSubmit(event) {
-      alert(
-        ' title: ' + this.state.title + 
-        ' category: ' + this.state.category +
-        ' provider: ' + this.state.provider +
-        ' contractEnd: ' + this.state.contractEnd +
-        ' notice: ' + this.state.notice
-        );
-
-      this.setState({redirect: true});
-
-      event.preventDefault();
-    }
-  
     render() {
-      const redirectAfterSubmit = this.state.redirect;
-      if (redirectAfterSubmit) {
-          return <Navigate to="/showReminder" />
-      }
-
+      console.log(this.props.state.category);
+      
       return (
-        <form className='reminder-form' onSubmit={this.handleSubmit}>
+        <form className='reminder-form' onSubmit={this.props.handleSubmit}>
+          <h2>Create Reminder:</h2>
           <label>
             Title:
-            <input type="text" value={this.state.title} onChange={this.handleTitleChange} />
+            <input type="text" value={this.props.state.title} onChange={this.props.handleTitleChange} required />
           </label>
 
-          <label>
-            Category:
-            <input type="text" value={this.state.category} onChange={this.handleCategoryChange} />
-          </label>
+          <label for="category">Category: </label>
+          <select id="category">
+            {
+                this.props.state.category.map((item) => {
+                    return <option>{item}</option>;
+                })
+            }
+          </select>
 
           <label>
             Provider:
-            <input type="text" value={this.state.provider} onChange={this.handleProviderChange} />
+            <input type="text" value={this.props.state.provider} onChange={this.props.handleProviderChange} required />
           </label>
 
           <label>
             Contract end:
-            <input type="text" value={this.state.contractEnd} onChange={this.handleContractEndChange} />
+            <input type="text" value={this.props.state.contractEnd} onChange={this.props.handleContractEndChange} required />
           </label>
 
           <label>
             Notice:
-            <input type="text" value={this.state.notice} onChange={this.handleNoticeChange} />
+            <input type="text" value={this.props.state.notice} onChange={this.props.handleNoticeChange} required />
           </label>
 
-          <input type="submit" value="Submit" />
+          <input type="submit" value="Next" />
         </form>
       );
     }
