@@ -4,4 +4,4 @@ export default function showReminder() {
         <h2>Show Reminder page</h2>
       </main>
     );
-  }
+}
