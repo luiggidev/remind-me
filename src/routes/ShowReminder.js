@@ -5,12 +5,15 @@ class ShowReminder extends React.Component {
     return (
       <div>
         <h2>Your Reminder:</h2>
-        <div>Title: {this.props.state.title}</div>
-        <div>Category: {this.props.state.category}</div>
-        <div>Provider: {this.props.state.provider}</div>
-        <div>Contract end date: {this.props.state.contractEnd}</div>
-        <div>Notice period: {this.props.state.notice}</div>
-        <button onClick={this.props.backToForm}>Back to reminder</button>
+        <div className="show-reminder">
+          <div><span>Title: </span>{this.props.state.title}</div>
+          <div><span>Category: </span>{this.props.state.category}</div>
+          <div><span>Provider: </span>{this.props.state.provider}</div>
+          <div><span>Contract end date: </span>{this.props.state.contractEnd}</div>
+          <div><span>Notice period: </span>{this.props.state.notice}</div>
+          <button onClick={this.props.backToForm}>Back to reminder</button>
+        </div>
+   
       </div>
     );
   }

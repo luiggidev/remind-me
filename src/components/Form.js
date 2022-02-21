@@ -13,7 +13,7 @@ class Form extends React.Component {
             <input type="text" value={this.props.state.title} onChange={this.props.handleTitleChange} required />
           </label>
 
-          <label htmlFor="category">Category: </label>
+          <label htmlFor="category"  className="category">Category: </label>
 
           <select 
           id="category"

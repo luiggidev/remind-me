@@ -10,8 +10,8 @@ class App extends React.Component {
         title: '',
         category: '',
         provider: '',
-        categoryData: [{id: 1, category: 'Loading ...'}],
-        providerData: [{id: 1, provider: 'Loading ...'}],
+        categoryData: [{id: 1, category: 'Choose Item'}],
+        providerData: [{id: 1, provider: 'Waiting for category'}],
         contractEnd: '',
         notice: '',
         redirect: false,
@@ -86,6 +86,8 @@ class App extends React.Component {
   };
 
   fetchProviderData(event) {
+    this.setState({providerData: [{id: 1, provider: 'Loading...'}]});
+
     this.state.categoryData.forEach(item => {
       if( item.category === event.target.value ) {
         fetch(`https://api-gateway.remind.me/provider/categoryProvider/category/${item.id}`)
@@ -98,11 +100,13 @@ class App extends React.Component {
 
   handleCategoryChange(event) {
     this.setState({category: event.target.value});
-    this.fetchProviderData(event);
 
-    // if(this.state.category === 'Choose Item'){
-    //   this.setState([{id: 1, provider: 'Waiting for category'}]);
-    // }
+    console.log(event.target.value);
+    if(event.target.value === 'Choose Item'){
+      this.setState({providerData: [{id: 1, provider: 'Waiting for category'}]});
+    } else {
+      this.fetchProviderData(event);
+    }
 
   }
 

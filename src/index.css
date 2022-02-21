@@ -12,19 +12,44 @@ code {
     monospace;
 }
 
-.reminder-form label {
-  display: block;
+
+.reminder-form {
+  width: 300px;
+}
+
+.reminder-form label,
+.reminder-form select,
+.reminder-form input[type="submit"],
+h2{
+  display: grid;
+  margin: 1rem;
+}
+.show-reminder{
   margin: 1rem;
 }
 
-.reminder-form input,
-.category, .provider,
-h2 {
-  margin-left: 1rem;
+.show-reminder button {
+  margin-top: 1rem;
+}
+.show-reminder span {
+  font-weight: bold;
+  margin-right: 1rem;
 }
 
+.reminder-form select.category{
+  margin-top: 0;
+  margin-bottom: .5rem;
+}
+
+.reminder-form select.provider{
+  margin-top: .5rem;
+}
+
+.reminder-form label.category{
+  margin-bottom: 0;
+}
 
 select {
   display: block;
-  min-width: 250px;
+  max-width: 265px;
 }
