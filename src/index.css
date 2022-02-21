@@ -17,6 +17,14 @@ code {
   margin: 1rem;
 }
 
-.reminder-form input {
+.reminder-form input,
+.category, .provider,
+h2 {
   margin-left: 1rem;
+}
+
+
+select {
+  display: block;
+  min-width: 250px;
 }

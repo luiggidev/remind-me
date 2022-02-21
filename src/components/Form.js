@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 // import { Navigate } from "react-router-dom";
 
+
 class Form extends React.Component {
+
     render() {
-      console.log(this.props.state.category);
-      
       return (
         <form className='reminder-form' onSubmit={this.props.handleSubmit}>
           <h2>Create Reminder:</h2>
@@ -13,19 +13,33 @@ class Form extends React.Component {
             <input type="text" value={this.props.state.title} onChange={this.props.handleTitleChange} required />
           </label>
 
-          <label for="category">Category: </label>
-          <select id="category">
+          <label htmlFor="category">Category: </label>
+
+          <select 
+          id="category"
+          className="category"
+          value={this.props.state.category} 
+          onChange={this.props.handleCategoryChange}
+          >
             {
-                this.props.state.category.map((item) => {
-                    return <option>{item}</option>;
-                })
+              this.props.state.categoryData.map((item) => {
+                  return <option key={item.id} value={item.category}>{item.category}</option>;
+              })
             }
           </select>
 
-          <label>
-            Provider:
-            <input type="text" value={this.props.state.provider} onChange={this.props.handleProviderChange} required />
-          </label>
+          <select 
+          id="provider"
+          className="provider"
+          value={this.props.state.provider} 
+          onChange={this.props.handleProviderChange}
+          >
+            {
+              this.props.state.providerData.map((item) => {
+                  return <option key={item.id} value={item.provider}>{item.provider}</option>;
+              })
+            }
+          </select>
 
           <label>
             Contract end:
